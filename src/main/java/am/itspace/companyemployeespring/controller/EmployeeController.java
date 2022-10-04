@@ -22,7 +22,7 @@ import java.util.Optional;
 
 @Controller
 public class EmployeeController {
-    @Value("C:\\Users\\Hoso\\IdeaProjects\\CompanyEmployeeSpring\\images")
+    @Value("${company.employee.images.folder}")
     private String folderPath;
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -46,9 +46,17 @@ public class EmployeeController {
     }
 
     @PostMapping("/employee/add")
-    public String addEmployee(@ModelAttribute Employee employee,
+    public String addEmployee(@ModelAttribute Employee employee, ModelMap modelMap,
                               @RequestParam("employeeImage") MultipartFile file) throws IOException {
+
+
         if (!file.isEmpty() && file.getSize() > 0) {
+            if(file.getContentType()!=null && !file.getContentType().contains("image")){
+                modelMap.addAttribute("errorMessageimage", "please input image");
+                List<Company> companyList = companyRepository.findAll();
+                modelMap.addAttribute("company", companyList);
+                return "/addemployee";
+            }
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             File newFile = new File(folderPath + File.separator + fileName);
             file.transferTo(newFile);

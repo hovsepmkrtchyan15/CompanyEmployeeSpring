@@ -18,9 +18,9 @@
                 th:text="${company.name}"
                 th:value="${company.id}"></option>
     </select>
-    <input type="file" name="employeeImage" id="employeeImage">
+    <input type="file" name="employeeImage" id="employeeImage" accept="image/*">
     <input type="submit" value="ADD">
-
+    <span style="color: red" th:if="${errorMessageimage != null}" th:text="${errorMessageimage}"></span>
 
 </form>
 

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
+</head>
+<body>
+
+<form action="/user/add" method="post">
+    <input type="text" name="name" id="name" placeholder="NAMA">
+    <input type="text" name="surname" id="surname" placeholder="SURNAMA">
+    <input type="email" name="email" id="email" placeholder="EMAIL">
+    <input type="password" name="password" id="password" placeholder="password">
+    <select name="roll">
+        <option value="ADMIN">ADMIN</option>
+        <option value="USER">USER</option>
+    </select>
+    <input type="submit" value="ADD">
+    <span style="color: red" th:if="${errorMessage != null}" th:text="${errorMessage}"></span>
+
+</form>
+
+</body>
+</html>

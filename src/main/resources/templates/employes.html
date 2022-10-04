@@ -43,5 +43,11 @@
     <a href="/employee/add">ADD NEW EMPLOYEE</a>
 </div>
 
+<div>
+    <a th:if="${currentUser !=null}" href="/logout">
+        <span>Sign Out</span> </a>
+
+</div>
+
 </body>
 </html>

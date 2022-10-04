@@ -28,6 +28,10 @@
 <div>
     <a href="/company/add">ADD NEW COMPANY</a>
 </div>
+<div>
+    <a th:if="${currentUser !=null}" href="/logout">
+        <span>Sign Out</span> </a>
 
+</div>
 </body>
 </html>
